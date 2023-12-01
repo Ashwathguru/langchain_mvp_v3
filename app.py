@@ -16,6 +16,11 @@ import streamlit.components.v1 as components
 # import API key from .env file
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
+st.set_page_config(
+    page_title="QuickpartsIT",
+    layout="wide",
+    initial_sidebar_state="collapsed")
+
 # Use local CSS
 def local_css(file_name):
     with open(file_name) as f:
@@ -84,11 +89,6 @@ def text_to_speech(text):
     st.markdown(audio_code, unsafe_allow_html=True)
 
 def reportsGPT():
-    st.set_page_config(
-    page_title="QuickpartsIT",
-    layout="wide",
-    initial_sidebar_state="collapsed")
-    
     st.image("images/report_charts.jpg")
     st.write("Ask about it")
     tab1, tab2 = st.tabs(["Speak", "Chat"])
