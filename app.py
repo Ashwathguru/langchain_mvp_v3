@@ -127,9 +127,9 @@ def reportsGPT():
               <source src="{video_path}" type="video/mp4">
               Your browser does not support the video tag.
             </video>
-            """
+            """.format(video_path=video_path)
             st.markdown(video_html, unsafe_allow_html=True)
-            components.html(video_html)
+            #components.html(video_html)
 
             save_audio_file(audio_bytes, "mp3")
             audio_file_path = max(
