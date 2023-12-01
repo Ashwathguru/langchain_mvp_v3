@@ -107,23 +107,14 @@ def text_to_speech(text):
     st.markdown(audio_code, unsafe_allow_html=True)
 
 def reportsGPT():
-    st.image("images/report_charts.jpg", use_column_width="always")
-    gif_path = "images/photo_bot.JPG"  # Replace with the actual path to your GIF file
-    gif_html = f"""
-            <img src="{gif_path}" alt="Your GIF" width="100%">
-            """.format(gif_path=gif_path)
-    components.html(gif_html, width=100, height=100)
-
-    st.image(gif_path)
-            
-    st.info('second option')
-            
-    st.markdown(gif_html, unsafe_allow_html=True)
     st.write("Ask about it")
-    tab1, tab2 = st.tabs(["Speak", "Chat"])
+    tab1, tab2 = st.tabs(["Speak", "Chat"])    
     # Record Audio tab
     with tab1:
+        gif_path = "images/photo_bot.JPG"
+        st.image(gif_path)
         audio_bytes = audio_recorder()
+        st.image("images/report_charts.jpg", use_column_width="always")
         if audio_bytes:
             st.cache_data.clear()
             #option to replay audio
