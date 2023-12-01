@@ -86,9 +86,9 @@ def text_to_speech(text):
 def reportsGPT():
     st.set_page_config(
     page_title="QuickpartsIT",
-    page_icon="📊",
     layout="wide",
     initial_sidebar_state="collapsed")
+    
     st.image("images/report_charts.jpg")
     st.write("Ask about it")
     tab1, tab2 = st.tabs(["Speak", "Chat"])
