@@ -89,7 +89,7 @@ def text_to_speech(text):
     st.markdown(audio_code, unsafe_allow_html=True)
 
 def reportsGPT():
-    st.image("images/report_charts.jpg", use_container_width=True)
+    st.image("images/report_charts.jpg", use_column_width="always")
     st.write("Ask about it")
     tab1, tab2 = st.tabs(["Speak", "Chat"])
     # Record Audio tab
