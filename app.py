@@ -12,7 +12,7 @@ from gtts import gTTS
 import base64
 from datetime import datetime
 import streamlit.components.v1 as components
-import logging
+#import logging
 
 # import API key from .env file
 openai.api_key = st.secrets["OPENAI_API_KEY"]
@@ -33,7 +33,7 @@ st.markdown(
         """,
         unsafe_allow_html=True
     )
-logging.basicConfig(level=logging.INFO)
+#logging.basicConfig(level=logging.INFO)
 # Use local CSS
 def local_css(file_name):
     with open(file_name) as f:
@@ -54,7 +54,7 @@ def get_answer_csv(query: str) -> str:
         return answer
     except Exception as e:
         # Handle other exceptions
-        logging.info(f"An error occurred(Please refresh and try): {e}")
+        #logging.info(f"An error occurred(Please refresh and try): {e}")
         answer=""
         return answer
 
@@ -63,7 +63,7 @@ def transcribe(audio_file):
         transcript = openai.Audio.transcribe("whisper-1", audio_file, language="en")
         return transcript
     except openai.error.InvalidRequestError as e:
-        logging.info(f"InvalidRequestError: {e}")
+        #logging.info(f"InvalidRequestError: {e}")
         st.info("I'm sorry, I couldn't catch that. Could you please repeat your question?")
         transcript="I'm sorry, I couldn't catch that. Could you please repeat your question?"
         return transcript
@@ -158,7 +158,7 @@ try:
     reportsGPT()
 except Exception as e:
     # Handle other exceptions
-    logging.info(e)
+    #logging.info(e)
     print(f"An error occurred(Please refresh and try): {e}")
     st.info("We ran into a problem. We're still in beta. Please refresh and try!")
 
