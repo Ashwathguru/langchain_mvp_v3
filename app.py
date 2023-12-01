@@ -117,7 +117,7 @@ def reportsGPT():
         with col2:
             # Centered markdown content
             #st.markdown("<p style='text-align: center;'>![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)</p>", unsafe_allow_html=True)
-            st.markdown("![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)")
+            st.markdown("![Alt Text](https://media.giphy.com/media/3o7TKzAJQ0lX1PBxug/giphy.gif)")
         audio_bytes = audio_recorder()
         st.image("images/report_charts.jpg", use_column_width="always")
         if audio_bytes:
