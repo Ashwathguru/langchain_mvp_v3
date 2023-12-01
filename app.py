@@ -107,7 +107,7 @@ def text_to_speech(text):
     st.markdown(audio_code, unsafe_allow_html=True)
 
 def reportsGPT():
-    st.write("Ask about it")
+    st.title(":green[Ask Quickparts-ITSM]")
     tab1, tab2 = st.tabs(["Speak", "Chat"])    
     # Record Audio tab
     with tab1:
