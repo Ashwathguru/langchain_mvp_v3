@@ -139,7 +139,7 @@ def reportsGPT():
                     speechSynthesis.speak(u);
                     """.format(response=response)
                     my_html = f"<script>{js_code}</script>"
-                    components.html(my_html)
+                    components.html(my_html, width=0, height=0)
     #Chat Tab
     with tab2:
         query = st.text_area("Ask any question related to the tickets",label_visibility="hidden")
