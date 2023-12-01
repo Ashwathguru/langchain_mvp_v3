@@ -21,6 +21,10 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed")
 
+st.set_option('deprecation.showfileUploaderEncoding', False)
+# Add an empty line to reduce space at the top
+st.markdown("<br>", unsafe_allow_html=True)
+
 # Use local CSS
 def local_css(file_name):
     with open(file_name) as f:
