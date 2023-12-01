@@ -46,13 +46,6 @@ def transcribe(audio_file):
     return transcript
 
 def save_audio_file(audio_bytes, file_extension):
-    """
-    Save audio bytes to a file with the specified extension.
-
-    :param audio_bytes: Audio data in bytes
-    :param file_extension: The extension of the output audio file
-    :return: The name of the saved audio file
-    """
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     file_name = f"audio_{timestamp}.{file_extension}"
 
@@ -91,6 +84,11 @@ def text_to_speech(text):
     st.markdown(audio_code, unsafe_allow_html=True)
 
 def reportsGPT():
+    st.set_page_config(
+    page_title="QuickpartsIT",
+    page_icon="📊",
+    layout="wide",
+    initial_sidebar_state="collapsed")
     st.image("images/report_charts.jpg")
     st.write("Ask about it")
     tab1, tab2 = st.tabs(["Speak", "Chat"])
