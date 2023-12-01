@@ -12,3 +12,4 @@ tiktoken
 black
 tabulate
 gTTS
+logging

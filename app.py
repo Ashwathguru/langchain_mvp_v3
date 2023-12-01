@@ -12,6 +12,7 @@ from gtts import gTTS
 import base64
 from datetime import datetime
 import streamlit.components.v1 as components
+import logging
 
 # import API key from .env file
 openai.api_key = st.secrets["OPENAI_API_KEY"]
@@ -32,7 +33,7 @@ st.markdown(
         """,
         unsafe_allow_html=True
     )
-
+logging.basicConfig(level=logging.INFO)
 # Use local CSS
 def local_css(file_name):
     with open(file_name) as f:
@@ -53,13 +54,19 @@ def get_answer_csv(query: str) -> str:
         return answer
     except Exception as e:
         # Handle other exceptions
-        print(f"An error occurred(Please refresh and try): {e}")
+        logging.info(f"An error occurred(Please refresh and try): {e}")
         answer=""
         return answer
 
 def transcribe(audio_file):
-    transcript = openai.Audio.transcribe("whisper-1", audio_file, language="en")
-    return transcript
+    try:
+        transcript = openai.Audio.transcribe("whisper-1", audio_file, language="en")
+        return transcript
+    except openai.error.InvalidRequestError as e:
+        logging.info(f"InvalidRequestError: {e}")
+        st.info("I'm sorry, I couldn't catch that. Could you please repeat your question?")
+        transcript="I'm sorry, I couldn't catch that. Could you please repeat your question?"
+        return transcript
 
 def save_audio_file(audio_bytes, file_extension):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -117,21 +124,22 @@ def reportsGPT():
             )
             # Transcribe the audio file
             transcript_text = transcribe_audio(audio_file_path)
-            # Display the transcript
-            st.header("Transcript")
-            st.write(transcript_text)
-            query=transcript_text
-            response=get_answer_csv(query)
-            if response != "":
-                st.write(response)
-                js_code="""
-                var u = new SpeechSynthesisUtterance();
-                u.text = "{response}";
-                u.lang = 'en-US';
-                speechSynthesis.speak(u);
-                """.format(response=response)
-                my_html = f"<script>{js_code}</script>"
-                components.html(my_html)
+            if transcript_text != "I'm sorry, I couldn't catch that. Could you please repeat your question?":
+                # Display the transcript
+                st.header("Transcript")
+                st.write(transcript_text)
+                query=transcript_text
+                response=get_answer_csv(query)
+                if response != "":
+                    st.write(response)
+                    js_code="""
+                    var u = new SpeechSynthesisUtterance();
+                    u.text = "{response}";
+                    u.lang = 'en-US';
+                    speechSynthesis.speak(u);
+                    """.format(response=response)
+                    my_html = f"<script>{js_code}</script>"
+                    components.html(my_html)
     #Chat Tab
     with tab2:
         query = st.text_area("Ask any question related to the tickets",label_visibility="hidden")
@@ -150,7 +158,7 @@ try:
     reportsGPT()
 except Exception as e:
     # Handle other exceptions
+    logging.info(e)
     print(f"An error occurred(Please refresh and try): {e}")
     st.info("We ran into a problem. We're still in beta. Please refresh and try!")
-    raise e
 
