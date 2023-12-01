@@ -150,6 +150,8 @@ def reportsGPT():
                     st.write(transcript_text)
                     query=transcript_text
                     response=get_answer_csv(query)
+                    if response != "":
+                        st.write(response)
                 if response != "":
                     st.write(response)
                     js_code="""
