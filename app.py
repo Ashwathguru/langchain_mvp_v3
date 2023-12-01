@@ -111,8 +111,9 @@ def reportsGPT():
     tab1, tab2 = st.tabs(["Speak", "Chat"])    
     # Record Audio tab
     with tab1:
-        gif_path = "images/photo_bot.JPG"
-        st.image(gif_path)
+        #gif_path = "images/photo_bot.JPG"
+        #st.image(gif_path)
+        st.markdown("![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)")
         audio_bytes = audio_recorder()
         st.image("images/report_charts.jpg", use_column_width="always")
         if audio_bytes:
