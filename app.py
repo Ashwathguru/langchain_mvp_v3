@@ -54,7 +54,6 @@ def get_answer_csv(query: str) -> str:
     except Exception as e:
         # Handle other exceptions
         print(f"An error occurred(Please refresh and try): {e}")
-        st.info("An error occurred.Please refresh and try")
         answer=""
         return answer
 
@@ -147,5 +146,10 @@ def reportsGPT():
 working_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(working_dir)
 # Run the main function
-reportsGPT()
+try:
+    reportsGPT()
+except Exception as e:
+    # Handle other exceptions
+    print(f"An error occurred(Please refresh and try): {e}")
+    st.info("We ran into a problem. We're still in beta:). Please refresh and try!")
 
