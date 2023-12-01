@@ -114,7 +114,7 @@ def reportsGPT():
             """.format(gif_path=gif_path)
     components.html(gif_html, width=100, height=100)
 
-    st.image(gif_path, use_column_width="always")
+    st.image(gif_path)
             
     st.info('second option')
             
