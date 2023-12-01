@@ -109,11 +109,11 @@ def text_to_speech(text):
 def reportsGPT():
     st.image("images/report_charts.jpg", use_column_width="always")
     st.write("Ask about it")
+    video_path = "images/character_video.mp4"
+    st.video(video_path, start_time=0)
     tab1, tab2 = st.tabs(["Speak", "Chat"])
     # Record Audio tab
     with tab1:
-        video_path = "images/character_video.mp4"
-        st.video(video_path, start_time=0)
         audio_bytes = audio_recorder()
         if audio_bytes:
             st.cache_data.clear()
