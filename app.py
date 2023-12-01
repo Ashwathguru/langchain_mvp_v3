@@ -144,11 +144,12 @@ def reportsGPT():
             # Transcribe the audio file
             transcript_text = transcribe_audio(audio_file_path)
             if transcript_text != "I'm sorry, I couldn't catch that. Could you please repeat your question?":
-                # Display the transcript
-                st.header("Transcript")
-                st.write(transcript_text)
-                query=transcript_text
-                response=get_answer_csv(query)
+                with col3:
+                    # Display the transcript
+                    st.header("Transcript")
+                    st.write(transcript_text)
+                    query=transcript_text
+                    response=get_answer_csv(query)
                 if response != "":
                     st.write(response)
                     js_code="""
