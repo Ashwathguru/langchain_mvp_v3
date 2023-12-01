@@ -120,9 +120,6 @@ def reportsGPT():
             #option to replay audio
             #st.audio(audio_bytes, format="audio/wav")
             # Display the recorded video
-            
-            
-            
             # HTML template with autoplay and loop attributes
             #ideo_html = f"""
             #video width="100%" controls autoplay loop>
