@@ -112,7 +112,7 @@ def reportsGPT():
     # Record Audio tab
     with tab1:
         col1, col2, col3 = st.columns([1, 1, 1])
-        with col2:
+        with col1:
             st.markdown("![Alt Text](https://media.giphy.com/media/3o7TKzAJQ0lX1PBxug/giphy.gif)")
             subcol1_1, subcol2_1, subcol3_1 = st.columns([1, 1, 1])
             with subcol2_1:
@@ -149,11 +149,13 @@ def reportsGPT():
     with tab2:
         query = st.text_area("Ask any question related to the tickets",label_visibility="hidden")
         button = st.button("Submit")
-        st.image("images/report_charts.jpg", use_column_width="always")
         if button:
             response=get_answer_csv(query)
             if response != "":
-                st.write(response)
+                resp = ":green["+response+"]"
+                st.header(resp)
+        st.image("images/report_charts.jpg", use_column_width="always")
+        
 
 
 # Set up the working directory
