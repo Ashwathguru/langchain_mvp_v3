@@ -113,10 +113,10 @@ def reportsGPT():
     with tab1:
         #gif_path = "images/photo_bot.JPG"
         #st.image(gif_path)
-        col1, col2, col3 = st.columns([1, 2, 1])
+        col1, col2, col3 = st.columns([1, 1, 1])
         with col2:
             # Centered markdown content
-            st.markdown("<p style='text-align: center;'>![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)</p>", unsafe_allow_html=True)
+            #st.markdown("<p style='text-align: center;'>![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)</p>", unsafe_allow_html=True)
             st.markdown("![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)")
         audio_bytes = audio_recorder()
         st.image("images/report_charts.jpg", use_column_width="always")
