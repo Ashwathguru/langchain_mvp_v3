@@ -158,6 +158,7 @@ def reportsGPT():
     with tab2:
         query = st.text_area("Ask any question related to the tickets",label_visibility="hidden")
         button = st.button("Submit")
+        st.image("images/report_charts.jpg", use_column_width="always")
         if button:
             response=get_answer_csv(query)
             if response != "":
