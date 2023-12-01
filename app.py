@@ -127,7 +127,7 @@ def reportsGPT():
             #t.markdown(video_html, unsafe_allow_html=True)
             #components.html(video_html)
             video_path = "images/character_video.mp4"
-            st.video(video_path, start_time=1)
+            st.video(video_path, start_time=0)
             audio_bytes = audio_recorder()
 
             save_audio_file(audio_bytes, "mp3")
