@@ -113,6 +113,8 @@ def reportsGPT():
             <img src="{gif_path}" alt="Your GIF" width="100%">
             """.format(gif_path=gif_path)
     components.html(gif_html, width=100, height=100)
+
+    st.image(gif_path, use_column_width="always")
             
     st.info('second option')
             
