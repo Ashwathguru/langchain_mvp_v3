@@ -111,56 +111,40 @@ def reportsGPT():
     tab1, tab2 = st.tabs(["Speak", "Chat"])    
     # Record Audio tab
     with tab1:
-        #gif_path = "images/photo_bot.JPG"
-        #st.image(gif_path)
-        col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 1])
+        col1, col2, col3 = st.columns([1, 1, 1])
         with col2:
-            # Centered markdown content
             st.markdown("![Alt Text](https://media.giphy.com/media/3o7TKzAJQ0lX1PBxug/giphy.gif)")
-        with col1:
-            audio_bytes = audio_recorder()
+            subcol1_1, subcol2_1, subcol3_1 = st.columns([1, 1, 1])
+            with subcol2_1:
+                audio_bytes = audio_recorder(text="")
+                if audio_bytes:
+                    st.cache_data.clear()
+                    save_audio_file(audio_bytes, "mp3")
+                    audio_file_path = max(
+                        [f for f in os.listdir(".") if f.startswith("audio")],
+                        key=os.path.getctime,
+                    )
+                    # Transcribe the audio file
+                    transcript_text = transcribe_audio(audio_file_path)
+                    if transcript_text != "I'm sorry, I couldn't catch that. Could you please repeat your question?":
+                        with col3:
+                            # Display the transcript
+                            st.header("Transcript",divider="red")
+                            st.header(transcript_text)
+                            query=transcript_text
+                            response=get_answer_csv(query)
+                            if response != "":
+                                resp = ":green["+response+"]"
+                                st.header(resp)
+                                js_code="""
+                                var u = new SpeechSynthesisUtterance();
+                                u.text = "{response}";
+                                u.lang = 'en-US';
+                                speechSynthesis.speak(u);
+                                """.format(response=response)
+                                my_html = f"<script>{js_code}</script>"
+                                components.html(my_html, width=0, height=0)
         st.image("images/report_charts.jpg", use_column_width="always")
-        if audio_bytes:
-            st.cache_data.clear()
-            #option to replay audio
-            #st.audio(audio_bytes, format="audio/wav")
-            # Display the recorded video
-            # HTML template with autoplay and loop attributes
-            #video_path = "images/character_video.mp4"
-            #video_html = f"""
-            #video width="100%" controls autoplay loop>
-            # <source src="{video_path}" type="video/mp4">
-            # Your browser does not support the video tag.
-            #/video>
-            #""".format(video_path=video_path)
-            #components.html(video_html, width=100, height=100)
-            
-            #st.video(video_path, start_time=0)
-            save_audio_file(audio_bytes, "mp3")
-            audio_file_path = max(
-                [f for f in os.listdir(".") if f.startswith("audio")],
-                key=os.path.getctime,
-            )
-            # Transcribe the audio file
-            transcript_text = transcribe_audio(audio_file_path)
-            if transcript_text != "I'm sorry, I couldn't catch that. Could you please repeat your question?":
-                with col5:
-                    # Display the transcript
-                    st.header("Transcript",divider="red")
-                    st.header(transcript_text)
-                    query=transcript_text
-                    response=get_answer_csv(query)
-                    if response != "":
-                        resp = ":green["+response+"]"
-                        st.header(resp)
-                        js_code="""
-                        var u = new SpeechSynthesisUtterance();
-                        u.text = "{response}";
-                        u.lang = 'en-US';
-                        speechSynthesis.speak(u);
-                        """.format(response=response)
-                        my_html = f"<script>{js_code}</script>"
-                        components.html(my_html, width=0, height=0)
     #Chat Tab
     with tab2:
         query = st.text_area("Ask any question related to the tickets",label_visibility="hidden")
