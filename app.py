@@ -22,7 +22,16 @@ st.set_page_config(
     initial_sidebar_state="collapsed")
 
 # Add an empty line to reduce space at the top
-st.markdown("<br>", unsafe_allow_html=True)
+st.markdown(
+        """
+        <style>
+        div.stApp {
+            margin-top: -50px;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
 # Use local CSS
 def local_css(file_name):
