@@ -108,6 +108,15 @@ def text_to_speech(text):
 
 def reportsGPT():
     st.image("images/report_charts.jpg", use_column_width="always")
+    gif_path = "images/photo_bot.JPG"  # Replace with the actual path to your GIF file
+    gif_html = f"""
+            <img src="{gif_path}" alt="Your GIF" width="100%" autoplay loop>
+            """.format(gif_path=gif_path)
+    components.html(gif_html, width=100, height=100)
+            
+    st.info('second option')
+            
+    st.markdown(gif_html, unsafe_allow_html=True)
     st.write("Ask about it")
     tab1, tab2 = st.tabs(["Speak", "Chat"])
     # Record Audio tab
