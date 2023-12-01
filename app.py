@@ -119,16 +119,16 @@ def reportsGPT():
             #st.audio(audio_bytes, format="audio/wav")
             # Display the recorded video
             # HTML template with autoplay and loop attributes
-            #ideo_html = f"""
-            #video width="100%" controls autoplay loop>
-            # <source src="{video_path}" type="video/mp4">
-            # Your browser does not support the video tag.
-            #/video>
-            #"".format(video_path=video_path)
-            #t.markdown(video_html, unsafe_allow_html=True)
-            #components.html(video_html)
             video_path = "images/character_video.mp4"
-            st.video(video_path, start_time=0)
+            video_html = f"""
+            video width="100%" controls autoplay loop>
+             <source src="{video_path}" type="video/mp4">
+             Your browser does not support the video tag.
+            /video>
+            """.format(video_path=video_path)
+            components.html(video_html)
+            
+            #st.video(video_path, start_time=0)
             save_audio_file(audio_bytes, "mp3")
             audio_file_path = max(
                 [f for f in os.listdir(".") if f.startswith("audio")],
