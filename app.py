@@ -123,7 +123,7 @@ def reportsGPT():
             video_path = "images/character_video.mp4"
             # HTML template with autoplay and loop attributes
             video_html = f"""
-            <video width="100%" autoplay loop>
+            <video width="100%" controls autoplay loop>
               <source src="{video_path}" type="video/mp4">
               Your browser does not support the video tag.
             </video>
