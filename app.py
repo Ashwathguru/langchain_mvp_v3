@@ -118,7 +118,18 @@ def reportsGPT():
             #option to replay audio
             #st.audio(audio_bytes, format="audio/wav")
             # Display the recorded video
-            st.video("images/character_video.mp4", start_time=0)
+            #st.video("images/character_video.mp4", start_time=0)
+            
+            video_path = "images/character_video.mp4"
+            # HTML template with autoplay and loop attributes
+            video_html = f"""
+            <video width="100%" autoplay loop>
+              <source src="{video_path}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            """
+            st.markdown(video_html, unsafe_allow_html=True)
+
             save_audio_file(audio_bytes, "mp3")
             audio_file_path = max(
                 [f for f in os.listdir(".") if f.startswith("audio")],
