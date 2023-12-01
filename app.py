@@ -110,7 +110,7 @@ def reportsGPT():
     st.image("images/report_charts.jpg", use_column_width="always")
     gif_path = "images/photo_bot.JPG"  # Replace with the actual path to your GIF file
     gif_html = f"""
-            <img src="{gif_path}" alt="Your GIF" width="100%" autoplay loop>
+            <img src="{gif_path}" alt="Your GIF" width="100%">
             """.format(gif_path=gif_path)
     components.html(gif_html, width=100, height=100)
             
