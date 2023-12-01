@@ -112,6 +112,7 @@ def reportsGPT():
     tab1, tab2 = st.tabs(["Speak", "Chat"])
     # Record Audio tab
     with tab1:
+        audio_bytes = audio_recorder()
         if audio_bytes:
             st.cache_data.clear()
             #option to replay audio
@@ -128,8 +129,6 @@ def reportsGPT():
             #components.html(video_html)
             video_path = "images/character_video.mp4"
             st.video(video_path, start_time=0)
-            audio_bytes = audio_recorder()
-
             save_audio_file(audio_bytes, "mp3")
             audio_file_path = max(
                 [f for f in os.listdir(".") if f.startswith("audio")],
