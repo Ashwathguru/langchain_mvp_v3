@@ -151,5 +151,6 @@ try:
 except Exception as e:
     # Handle other exceptions
     print(f"An error occurred(Please refresh and try): {e}")
-    st.info("We ran into a problem. We're still in beta:). Please refresh and try!")
+    st.info("We ran into a problem. We're still in beta. Please refresh and try!")
+    raise e
 
