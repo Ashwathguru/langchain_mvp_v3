@@ -126,7 +126,7 @@ def reportsGPT():
              Your browser does not support the video tag.
             /video>
             """.format(video_path=video_path)
-            components.html(video_html)
+            components.html(video_html, width=100, height=100)
             
             #st.video(video_path, start_time=0)
             save_audio_file(audio_bytes, "mp3")
