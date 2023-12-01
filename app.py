@@ -117,6 +117,8 @@ def reportsGPT():
             st.cache_data.clear()
             #option to replay audio
             #st.audio(audio_bytes, format="audio/wav")
+            # Display the recorded video
+            st.video("images/character_video.mp4", start_time=0)
             save_audio_file(audio_bytes, "mp3")
             audio_file_path = max(
                 [f for f in os.listdir(".") if f.startswith("audio")],
