@@ -130,16 +130,18 @@ def reportsGPT():
                 st.write(transcript_text)
                 query=transcript_text
                 response=get_answer_csv(query)
-                if response != "":
-                    st.write(response)
-                    js_code="""
-                    var u = new SpeechSynthesisUtterance();
-                    u.text = "{response}";
-                    u.lang = 'en-US';
-                    speechSynthesis.speak(u);
-                    """.format(response=response)
-                    my_html = f"<script>{js_code}</script>"
-                    components.html(my_html)
+            else:
+                response = transcript_text
+            if response != "":
+                st.write(response)
+                js_code="""
+                var u = new SpeechSynthesisUtterance();
+                u.text = "{response}";
+                u.lang = 'en-US';
+                speechSynthesis.speak(u);
+                """.format(response=response)
+                my_html = f"<script>{js_code}</script>"
+                components.html(my_html)
     #Chat Tab
     with tab2:
         query = st.text_area("Ask any question related to the tickets",label_visibility="hidden")
