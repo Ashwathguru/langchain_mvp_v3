@@ -112,14 +112,15 @@ def reportsGPT():
     tab1, tab2 = st.tabs(["Speak", "Chat"])
     # Record Audio tab
     with tab1:
+        video_path = "images/character_video.mp4"
+        st.video(video_path, start_time=0)
         audio_bytes = audio_recorder()
         if audio_bytes:
             st.cache_data.clear()
             #option to replay audio
             #st.audio(audio_bytes, format="audio/wav")
             # Display the recorded video
-            video_path = "images/character_video.mp4"
-            st.video(video_path, start_time=0)
+            
             
             
             # HTML template with autoplay and loop attributes
