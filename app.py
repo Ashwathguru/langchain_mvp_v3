@@ -129,6 +129,7 @@ def reportsGPT():
             </video>
             """
             st.markdown(video_html, unsafe_allow_html=True)
+            components.html(video_html)
 
             save_audio_file(audio_bytes, "mp3")
             audio_file_path = max(
