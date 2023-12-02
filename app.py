@@ -138,16 +138,10 @@ def reportsGPT():
                                 if response != "":
                                     resp = ":green["+response+"]"
                                     st.header(resp)
-                                    js_code = """
+                                    js_code="""
                                     var u = new SpeechSynthesisUtterance();
                                     u.text = "{response}";
                                     u.lang = 'en-US';
-
-                                    // Specify the voice gender (female)
-                                    u.voice = window.speechSynthesis.getVoices().find(function(voice) {
-                                        return voice.name === 'Google US English Female';
-                                    });
-
                                     speechSynthesis.speak(u);
                                     """.format(response=response)
                                     my_html = f"<script>{js_code}</script>"
@@ -170,12 +164,12 @@ def reportsGPT():
 working_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(working_dir)
 # Run the main function
-#try:
-#    reportsGPT()
-#except Exception as e:
-#    # Handle other exceptions
-#    #logging.info(e)
-#    print(f"An error occurred(Please refresh and try): {e}")
-#    st.info("We ran into a problem. We're still in beta. Please refresh and try!")
+try:
+    reportsGPT()
+except Exception as e:
+    # Handle other exceptions
+    #logging.info(e)
+    print(f"An error occurred(Please refresh and try): {e}")
+    st.info("We ran into a problem. We're still in beta. Please refresh and try!")
 
-reportsGPT()
+#reportsGPT()
