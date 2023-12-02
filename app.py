@@ -113,15 +113,14 @@ def reportsGPT():
         tab1, tab2 = st.tabs(["Speak", "Chat"])    
         # Record Audio tab
         with tab1:
-            #col1,col2,col3 = st.columns([1, 1, 1])
-            col1,col3 = st.columns([1, 1])
+            col1,col2,col3 = st.columns([1, 1, 1])
+            #col1,col3 = st.columns([1, 1])
             with col1:
                 #st.markdown("![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHU0am5mY2ZnczV5aHFnNnB0bGM2aWNkYmx4c2JneTZqeWljNXY4eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/eFGDIwEIxtWrYDaOA3/giphy.gif)")
                 #st.markdown("![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHY1OWI5NDU2ZXBudGZzc2twbHRlM2cyM2g2ZHE4eDJnN3Z1Y2FjZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/sUMxsGhGNlCTIq8wyv/giphy.gif)")
-                st.markdown("![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWM1ZnN4MDhrbnhjN3RtNm5zMjEwcnhucnF6MWhoNW9ueTFpcm04OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/uoYeojstTc5muBvogt/giphy.gif)")
+                #st.markdown("![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWM1ZnN4MDhrbnhjN3RtNm5zMjEwcnhucnF6MWhoNW9ueTFpcm04OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/uoYeojstTc5muBvogt/giphy.gif)")
                 subcol1_1, subcol2_1, subcol3_1 = st.columns([1, 1, 1])
                 with subcol2_1:
-                    
                     audio_bytes = audio_recorder(text="")
                     if audio_bytes:
                         st.cache_data.clear()
