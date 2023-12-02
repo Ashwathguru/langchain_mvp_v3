@@ -120,34 +120,36 @@ def reportsGPT():
                 subcol1_1, subcol2_1, subcol3_1 = st.columns([1, 1, 1])
                 with subcol2_1:
                     st.markdown("![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHY1OWI5NDU2ZXBudGZzc2twbHRlM2cyM2g2ZHE4eDJnN3Z1Y2FjZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/sUMxsGhGNlCTIq8wyv/giphy.gif)")
-                    audio_bytes = audio_recorder(text="")
-                    if audio_bytes:
-                        st.cache_data.clear()
-                        save_audio_file(audio_bytes, "mp3")
-                        audio_file_path = max(
-                            [f for f in os.listdir(".") if f.startswith("audio")],
-                            key=os.path.getctime,
-                        )
-                        # Transcribe the audio file
-                        transcript_text = transcribe_audio(audio_file_path)
-                        if transcript_text != "I'm sorry, I couldn't catch that. Could you please repeat your question?":
-                            with col3:
-                                # Display the transcript
-                                st.header("Transcript",divider="red")
-                                st.header(transcript_text)
-                                query=transcript_text
-                                response=get_answer_csv(query)
-                                if response != "":
-                                    resp = ":green["+response+"]"
-                                    st.header(resp)
-                                    js_code="""
-                                    var u = new SpeechSynthesisUtterance();
-                                    u.text = "{response}";
-                                    u.lang = 'en-US';
-                                    speechSynthesis.speak(u);
-                                    """.format(response=response)
-                                    my_html = f"<script>{js_code}</script>"
-                                    components.html(my_html, width=0, height=0)
+                    subcol2_1_1, subcol2_1_2, subcol3_1_3 = st.columns([1, 1, 1])
+                    with subcol2_1_2:
+                        audio_bytes = audio_recorder(text="")
+                        if audio_bytes:
+                            st.cache_data.clear()
+                            save_audio_file(audio_bytes, "mp3")
+                            audio_file_path = max(
+                                [f for f in os.listdir(".") if f.startswith("audio")],
+                                key=os.path.getctime,
+                            )
+                            # Transcribe the audio file
+                            transcript_text = transcribe_audio(audio_file_path)
+                            if transcript_text != "I'm sorry, I couldn't catch that. Could you please repeat your question?":
+                                with col3:
+                                    # Display the transcript
+                                    st.header("Transcript",divider="red")
+                                    st.header(transcript_text)
+                                    query=transcript_text
+                                    response=get_answer_csv(query)
+                                    if response != "":
+                                        resp = ":green["+response+"]"
+                                        st.header(resp)
+                                        js_code="""
+                                        var u = new SpeechSynthesisUtterance();
+                                        u.text = "{response}";
+                                        u.lang = 'en-US';
+                                        speechSynthesis.speak(u);
+                                        """.format(response=response)
+                                        my_html = f"<script>{js_code}</script>"
+                                        components.html(my_html, width=0, height=0)
             #st.image("images/report_charts.jpg", use_column_width="always")
         #Chat Tab
         with tab2:
