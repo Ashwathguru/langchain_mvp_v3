@@ -113,7 +113,7 @@ def reportsGPT():
         tab1, tab2 = st.tabs(["Speak", "Chat"])    
         # Record Audio tab
         with tab1:
-            col1, col2, col3 = st.columns([1, 1, 1])
+            col1,col3 = st.columns([1, 1])
             with col1:
                 st.markdown("![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHU0am5mY2ZnczV5aHFnNnB0bGM2aWNkYmx4c2JneTZqeWljNXY4eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/eFGDIwEIxtWrYDaOA3/giphy.gif)")
                 subcol1_1, subcol2_1, subcol3_1 = st.columns([1, 1, 1])
