@@ -138,10 +138,16 @@ def reportsGPT():
                                 if response != "":
                                     resp = ":green["+response+"]"
                                     st.header(resp)
-                                    js_code="""
+                                    js_code = """
                                     var u = new SpeechSynthesisUtterance();
                                     u.text = "{response}";
                                     u.lang = 'en-US';
+                                    
+                                    // Specify the voice gender (female)
+                                    u.voice = window.speechSynthesis.getVoices().find(function(voice) {
+                                        return voice.name === 'Google US English Female';
+                                    });
+                                    
                                     speechSynthesis.speak(u);
                                     """.format(response=response)
                                     my_html = f"<script>{js_code}</script>"
