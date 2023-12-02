@@ -27,7 +27,7 @@ st.markdown(
         """
         <style>
         div.stApp {
-            margin-top: -50px;
+            margin-top: -100px;
         }
         </style>
         """,
