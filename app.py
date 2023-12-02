@@ -168,12 +168,12 @@ def reportsGPT():
 working_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(working_dir)
 # Run the main function
-try:
-    reportsGPT()
-except Exception as e:
-    # Handle other exceptions
-    #logging.info(e)
-    print(f"An error occurred(Please refresh and try): {e}")
-    st.info("We ran into a problem. We're still in beta. Please refresh and try!")
+#try:
+#    reportsGPT()
+#except Exception as e:
+#    # Handle other exceptions
+#    #logging.info(e)
+#    print(f"An error occurred(Please refresh and try): {e}")
+#    st.info("We ran into a problem. We're still in beta. Please refresh and try!")
 
-#reportsGPT()
+reportsGPT()
