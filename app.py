@@ -113,7 +113,7 @@ def reportsGPT():
     with tab1:
         col1, col2, col3 = st.columns([1, 1, 1])
         with col1:
-            st.markdown("![Alt Text](https://media.giphy.com/media/3o7TKzAJQ0lX1PBxug/giphy.gif)")
+            st.markdown("![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXkwMmdtOWRmZWdyYzQ2Y2l6bXBtYW1jZzJwMmRkb25nZnEwYzJ2aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/poqOG963wPaU0z8Dga/giphy.gif)")
             subcol1_1, subcol2_1, subcol3_1 = st.columns([1, 1, 1])
             with subcol2_1:
                 audio_bytes = audio_recorder(text="")
