@@ -107,7 +107,7 @@ def text_to_speech(text):
     st.markdown(audio_code, unsafe_allow_html=True)
 
 def reportsGPT():
-    st.title(":green[Ask Quickparts-ITSM]")
+    #st.title(":green[Ask Quickparts-ITSM]")
     my_expander = st.expander(":green[Ask me about the Report]", expanded=False)
     with my_expander:
         tab1, tab2 = st.tabs(["Speak", "Chat"])    
@@ -146,7 +146,7 @@ def reportsGPT():
                                     """.format(response=response)
                                     my_html = f"<script>{js_code}</script>"
                                     components.html(my_html, width=0, height=0)
-            st.image("images/report_charts.jpg", use_column_width="always")
+            #st.image("images/report_charts.jpg", use_column_width="always")
         #Chat Tab
         with tab2:
             query = st.text_area("Ask any question related to the tickets",label_visibility="hidden")
@@ -156,7 +156,7 @@ def reportsGPT():
                 if response != "":
                     resp = ":green["+response+"]"
                     st.header(resp)
-            st.image("images/report_charts.jpg", use_column_width="always")
+    st.image("images/report_charts.jpg", use_column_width="always")
         
 
 
