@@ -49,7 +49,7 @@ def get_answer_csv(query: str) -> str:
         return answer
     except openai.error.InvalidRequestError as e:
         print(f"InvalidRequestError: {e}")
-        st.info('This is an experimental version, so feel free to ask simpler questions as we fine-tune our system.')
+        st.info('For getting this information: Please contact quickpartsitsupport@acldigital.com')
         answer=""
         return answer
     except Exception as e:
